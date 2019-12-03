@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         blow_btn.setOnClickListener(new View.OnClickListener() { // Listener 함수
             @Override
             public void onClick(View v) {
-                if(tView.detmove == 0) { // 움직일 수 있다
+                if (tView.detmove == 0) { // 움직일 수 있다
                     int a = 0;
                     a += 8;
                     tView.radius = tView.radius + a;
@@ -32,8 +32,11 @@ public class MainActivity extends AppCompatActivity {
                     tView.moveable = 1;
                 }
                 count += 150;
-//            if(Math.abs(px - tView.x) >= Math.abs(tView.radius + (px - x1)) ||
-//                    Math.abs(py - tView.y) >= Math.abs(tView.radius + (py - y1))) {} // 충돌할 경우
+//                for (int i = 0; i < 20; i++) {
+//                    if (Math.abs(bView.px[i] - tView.x) >= Math.abs(tView.radius + (bView.px[i] - x1)) ||
+//                            Math.abs(bView.py[i] - tView.y) >= Math.abs(tView.radius + (bView.py[i] - y1))) {
+//                    } // 충돌할 경우
+//                }
             }
         });
     }

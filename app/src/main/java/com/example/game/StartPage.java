@@ -20,7 +20,7 @@ public class StartPage extends AppCompatActivity {
         start_btn.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StartPage.this,MainActivity.class);
+                Intent intent = new Intent(StartPage.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }

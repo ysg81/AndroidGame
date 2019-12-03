@@ -6,25 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<com.example.project.TargetView
-android:id="@+id/tview"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:background="#fffaa0"
-app:layout_constraintBottom_toBottomOf="parent"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toTopOf="parent" />
+    <com.example.game.TargetView
+    android:id="@+id/tview"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#fffaa0"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
 
-<Button
-android:id="@+id/blow_btn"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="Blow"
-app:layout_constraintBottom_toBottomOf="parent"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintHorizontal_bias="0.95"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toTopOf="parent"
-app:layout_constraintVertical_bias="0.976" />
+    <Button
+    android:id="@+id/blow_btn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Blow"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.95"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.976" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
