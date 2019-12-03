@@ -9,22 +9,21 @@ import java.util.Random;
 
 public class Block {
 
-    public Rect block;
+    public RectF block;
     protected Paint paint;
     Random random = new Random();
 
-    int x = random.nextInt(1080);
-    int y = random.nextInt(1600);
-    int d = random.nextInt(150) + 50;
+    float x = random.nextInt(1080);
+    float y = random.nextInt(1600);
+    float r = random.nextInt(150) + 50;
 
     public Block(int color){
         paint = new Paint();
         paint.setColor(color);
-        block = new Rect();
+        block = new RectF();
     }
 
     public void draw(Canvas canvas){
-        block.set(x, y, x + d, y + d);
-        canvas.drawRect(block, paint);
+        canvas.drawCircle(x, y, r, paint);
     }
 }
