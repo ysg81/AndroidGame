@@ -17,10 +17,19 @@ public class StartPage extends AppCompatActivity {
 
         Button start_btn = (Button)findViewById(R.id.exitgame);
         Button exit_btn = (Button)findViewById(R.id.restart);
+        Button help_btn = (Button)findViewById(R.id.helpgame);
         start_btn.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(StartPage.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }));
+        help_btn.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StartPage.this, HelpPage.class);
                 startActivity(intent);
                 finish();
             }

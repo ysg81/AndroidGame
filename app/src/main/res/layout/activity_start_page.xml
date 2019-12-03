@@ -7,22 +7,33 @@
     tools:context=".StartPage">
 
     <Button
-        android:id="@+id/restart"
+        android:id="@+id/exitgame"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="132dp"
-        android:text="게임 종료"
+        android:layout_marginBottom="320dp"
+        android:text="게임 시작"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/exitgame"
+        android:id="@+id/helpgame"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="280dp"
-        android:text="게임 시작"
+        android:layout_marginBottom="200dp"
+        android:text="게임 방법"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/restart"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="80dp"
+        android:text="게임 종료"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -33,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="104dp"
-        android:text="Sudden Catch"
+        android:text="Blow or Boom"
         android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
