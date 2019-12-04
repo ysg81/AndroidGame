@@ -16,17 +16,16 @@ import java.util.Random;
 
 public class BlockView extends View {
 
-    final int STAGE_COUNTER = 4; // 스테이지 갯수
 
-    float[] px = new float[30]; // Block의 중심 x 좌표
-    float[] py = new float[30]; // Block의 중심 y 좌표
-    float[] pr = new float[30]; // Block의 반지름
+    float[] px = new float[20]; // Block의 중심 x 좌표
+    float[] py = new float[20]; // Block의 중심 y 좌표
+    float[] pr = new float[20]; // Block의 반지름
 
     ArrayList<Block> block_list = new ArrayList<Block>(); // array를 이용한 Block객체 선언
 
     public BlockView(Context context) {
         super(context);
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 20; i++) {
             block_list.add(new Block(Color.BLACK)); // Block 객체 배열 추가
         }
     }
@@ -42,7 +41,4 @@ public class BlockView extends View {
         invalidate();
     }
 
-    public void Makestage(){
-
-    }
 }

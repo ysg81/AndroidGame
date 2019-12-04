@@ -15,7 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    int count = 0;
+    int count = 0; // 점수
+    int detect = 0;  // 충돌 확인
     private Handler mHandler;
 
     @Override
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN: // 버튼을 꾹 누르고 있을 경우
                         mHandler = new Handler();
-                        mHandler.postDelayed(mAction, 5);
+                        mHandler.postDelayed(mAction, 1);
                         break;
                     case MotionEvent.ACTION_UP: // 버튼에서 손을 뗄 경우
                         mHandler.removeCallbacks(mAction);
@@ -45,53 +46,71 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
             Runnable mAction = new Runnable() {
-                @Override public void run() {
+                @Override
+                public void run() {
                     if (tView.detmove == 1) { // 버튼 누르기 가능
-                        int a = 0;
-                        a += 6;
-                        tView.radius = tView.radius + a;
-                        tView.invalidate();
-                        tView.moveable = 1; // 버튼이 누르고 난 후 위치변경 불가
-                        for (int i = 0; i < 30; i++) {
+
+                        //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ충돌 판단ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ//
+                        for (int i = 0; i < 20; i++) {
                             if (Math.sqrt((Math.pow(tView.x - bView.px[i], 2) + Math.pow(tView.y - bView.py[i], 2)))
-                                    <= tView.radius + bView.pr[i]) { // 원이 접할 경우 충돌
-//                                  || Math.abs(tView.x - bView.getWidth()) >= tView.radius){
-//                                || Math.abs(tView.y - bView.getHeight()) >= tView.radius) { // 원이 화면 밖으로 나갈 경우 충돌
-                                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
-                                alertDialogBuilder.setTitle("Game over "); // AlertDialog 타이틀
-                                alertDialogBuilder
-                                        .setMessage(" Score : " + count + "\n" + " Retry? ") // 점수와 함께 출력
-                                        .setCancelable(false)
-                                        .setPositiveButton("게임 종료",
-                                                new DialogInterface.OnClickListener() {
-                                                    public void onClick(
-                                                            DialogInterface dialog, int id) { // 프로그램 종료
-                                                        MainActivity.this.finish();
-                                                    }
-                                                })
-                                        .setNegativeButton("다시 하기",
-                                                new DialogInterface.OnClickListener() {
-                                                    public void onClick(
-                                                            DialogInterface dialog, int id) { // 다이얼로그 취소
-                                                        dialog.cancel();
-                                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                                        startActivity(intent);
-                                                        finish();
-                                                        // 재시작
-                                                    }
-                                                });
-                                AlertDialog alertDialog = alertDialogBuilder.create(); // 다이얼로그 생성
-                                alertDialog.show(); // 다이얼로그 띄우기
-                            } else
-                                count += 1; // socre 카운트
+                                    <= tView.radius + bView.pr[i])  // 충돌할 경우
+                                detect = 1;
+                        }
+                        if(tView.x < tView.radius || tView.y < tView.radius)
+                            detect = 1;
+                        if(tView.getWidth()-tView.x < tView.radius || tView.getHeight()-tView.y < tView.radius)
+                            detect = 1;
+                        //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ충돌 판단ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ//
+
+                        try {
+                            Thread.sleep(5);
+                        }catch(Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        if(detect ==  1 ){ // 충돌할 경우
+                            int score = count;
+                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+                            alertDialogBuilder.setTitle("Game over "); // AlertDialog 타이틀
+                            alertDialogBuilder
+                                            .setMessage(" Score : " + score + "\n" + " Retry? ") // 점수와 함께 출력
+                                            .setCancelable(false)
+                                            .setPositiveButton("게임 종료",
+                                                    new DialogInterface.OnClickListener() {
+                                                        public void onClick(
+                                                                DialogInterface dialog, int id) { // 프로그램 종료
+                                                            MainActivity.this.finish();
+                                                        }
+                                                    })
+                                            .setNegativeButton("다시 하기",
+                                                    new DialogInterface.OnClickListener() {
+                                                        public void onClick(
+                                                                DialogInterface dialog, int id) { // 다이얼로그 취소
+                                                            dialog.cancel();
+                                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                                            startActivity(intent);
+                                                            finish();
+                                                            // 재시작
+                                                        }
+                                                    });
+                                    AlertDialog alertDialog = alertDialogBuilder.create(); // 다이얼로그 생성
+                                    alertDialog.show(); // 다이얼로그 띄우기
+                                }
+                        else  { // 충돌하지 않을 경우
+                            int a = 0;
+                            a += 10;
+                            tView.radius = tView.radius + a;
+                            tView.invalidate();
+                            tView.moveable = 1; // 버튼이 누르고 난 후 위치변경 불가
+                            count += 1; // socre 카운트
                         }
                     } else { // 버튼을 먼저 누를 경우 위치 지정 알림 메세지
                         Toast.makeText(getApplicationContext(), "위치를 먼저 지정해야 합니다.",
                                 Toast.LENGTH_LONG).show();
                         tView.detmove = 0;
-                        mHandler.postDelayed(this, 500);
+                        mHandler.postDelayed(this, 5);
                     }
-                    mHandler.postDelayed(this, 10);
+                    mHandler.postDelayed(this, 1);
                 }
             };
         });

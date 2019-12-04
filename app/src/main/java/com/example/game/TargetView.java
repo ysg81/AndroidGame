@@ -55,12 +55,12 @@ public class TargetView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if(event.getAction() == MotionEvent.ACTION_DOWN) {
-            if(moveable == 0) { // Button을 누르기 전 위치변경에 대한 x, y값 받기
-                x = event.getX();
-                y = event.getY();
-                invalidate();
-                detmove = 1; // 터치를 하면 detmove 1 반환
-            }
+                if (moveable == 0) { // Button을 누르기 전 위치변경에 대한 x, y값 받기
+                    x = event.getX();
+                    y = event.getY();
+                    invalidate();
+                    detmove = 1; // 터치를 하면 detmove 1 반환
+                }
         }
         return true;
     }
