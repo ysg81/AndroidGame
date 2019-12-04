@@ -33,9 +33,10 @@ public class TargetView extends View {
         super(context, attrs, defStyle);
         initView();
     }
+
     private void initView() {
         paint.setColor(Color.RED);
-    }
+    } // Color 초기화
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -63,5 +64,5 @@ public class TargetView extends View {
                 }
         }
         return true;
-    }
+    } // Target의 위치 변경
 }

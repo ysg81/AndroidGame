@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-public class IntroActivity extends Activity {
+public class IntroPage extends Activity {
     Handler handler = new Handler();
     Runnable r = new Runnable() {
         @Override
@@ -21,7 +21,7 @@ public class IntroActivity extends Activity {
     };
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_intro); //xml , java 소스 연결
+        setContentView(R.layout.activity_intro_page); //xml , java 소스 연결
     }
     @Override
     protected void onResume() {
